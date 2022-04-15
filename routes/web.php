@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+| 
 */
 
 Route::get('/', function () {
@@ -21,5 +21,6 @@ Auth::routes();
 
 // Ruta para mostrar el calendario
 Route::get('/evento', [App\Http\Controllers\EventoController::class, 'index']);
+Route::post('/evento/agregar', [App\Http\Controllers\EventoController::class, 'store']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
