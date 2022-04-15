@@ -24,4 +24,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calendar.render();
 
+    //const axios = require('axios').default;
+
+    document.getElementById("btnGuardar").addEventListener("click", function () {
+
+        const datos = new FormData(formulario);
+        console.log(datos);
+
+        axios.post("http://localhost/calendar/public/evento/agregar", datos).
+            then(
+                (respuesta) => {
+                    $('#evento').modal('hide');
+                }
+            ).catch(
+                error => {
+                    if (error.response) {
+                        console.log(error.response.data);
+                    }
+                }
+            )
+        /*
+                axios.post("http://localhost/calendar/public/evento/agregar", datos).
+                    then((respuesta) => {
+                        $("#evento").modal("hide");/*
+                        console.log(response);
+                        calendar.addEvent({
+                            title: response.data.title,
+                            start: response.data.start,
+                            end: response.data.end,
+                            color: response.data.color
+                        });*/
+    })
+    /*
+            axios({
+                method: 'post',
+                url: 'http://localhost/calendar/public/evento/agregar',
+                data: datos
+            }).
+                then((respuesta) => {
+                    $("#evento").modal("hide");
+                    /*console.log(response);
+                    calendar.addEvent({
+                        title: response.data.title,
+                        start: response.data.start,
+                        end: response.data.end,
+                        color: response.data.color
+                    });
+                })*/
+
+    /*
+            e.preventDefault();
+            let titulo = document.getElementById("titulo").value;
+            let start = document.getElementById("start").value;
+            let end = document.getElementById("end").value;
+            let color = document.getElementById("color").value;
+    
+            calendar.addEvent({
+                title: titulo,
+                start: start,
+                end: end,
+                color: color
+            });
+            $("#evento").modal("hide");*/
 });
